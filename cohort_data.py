@@ -104,9 +104,43 @@ def hogwarts_by_house(filename):
     ghosts = []
     instructors = []
 
-    # Code goes here
+    cohort_file = open('cohort_data.txt')
+
+    
+    for line in cohort_file:
+        line = line.rstrip()
+        words = line.split('|')
+
+        if words[2] == "Dumbledore's Army":
+            dumbledores_army.append(words[1])
+        elif words[2] == 'Gryffindor':
+            gryffindor.append(words[1])
+        elif words[2] == 'Hufflepuff':
+            hufflepuff.append(words[1])
+        elif words[2] == 'Ravenclaw':
+            ravenclaw.append(words[1])
+        elif words[2] == 'Slytherin':
+            slytherin.append(words[1])
+        elif words[4] == 'G':
+            ghosts.append(words[1])
+        elif words[4] == 'I':
+            instructors.append(words[1])
+
+
+    all_hogwarts.append(sorted(dumbledores_army))
+    all_hogwarts.append(sorted(gryffindor))
+    all_hogwarts.append(sorted(hufflepuff))
+    all_hogwarts.append(sorted(ravenclaw))
+    all_hogwarts.append(sorted(slytherin))
+    all_hogwarts.append(sorted(ghosts))
+    all_hogwarts.append(sorted(instructors))
+
+
+    cohort_file.close()
 
     return all_hogwarts
+
+
 
 
 def all_students_tuple_list(filename):
