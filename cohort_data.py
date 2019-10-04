@@ -16,7 +16,16 @@ def unique_houses(filename):
 
     houses = set()
 
-    # Code goes here
+    cohort_file = open('cohort_data.txt')
+
+    
+    for line in cohort_file:
+        words = line.split('|')
+        if words[2] != '':
+            houses.add(words[2])
+
+
+    cohort_file.close()
 
     return houses
 
@@ -43,6 +52,31 @@ def sort_by_cohort(filename):
     ghosts = []
 
     # Code goes here
+    cohort_file = open('cohort_data.txt')
+
+    
+    for line in cohort_file:
+        line = line.rstrip()
+        words = line.split('|')
+        if words[4] == 'Winter 2016':
+            winter_16.append(words[0] + " " + words[1])
+        elif words[4] == 'Spring 2016':
+            spring_16.append(words[0] + " " + words[1])
+        elif words[4] == 'Summer 2016':
+            summer_16.append(words[0] + " " + words[1])
+        elif words[4] == 'Fall 2015':
+            fall_15.append(words[0] + " " + words[1])
+        elif words[4] == 'G':
+            ghosts.append(words[0] + " " + words[1])
+
+    all_students.append(fall_15)
+    all_students.append(winter_16)
+    all_students.append(spring_16)
+    all_students.append(summer_16)
+    all_students.append(ghosts)
+    
+        
+    cohort_file.close()
 
     return all_students
 
