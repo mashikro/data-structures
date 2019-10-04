@@ -158,7 +158,17 @@ def all_students_tuple_list(filename):
 
     student_list = []
 
-    # Code goes here
+    cohort_file = open('cohort_data.txt')
+
+    
+    for line in cohort_file:
+        line = line.rstrip()
+        words = line.split('|')
+        if words[4] != 'G' and words[4] != 'I':
+            student_data = (words[0]+ ' ' + words[1], words[2], words[3], words[4])
+            student_list.append(student_data)
+
+    cohort_file.close()
 
     return student_list
 
